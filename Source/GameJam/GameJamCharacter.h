@@ -82,6 +82,15 @@ public:
 	/** Returns FirstPersonCameraComponent subobject **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
+public:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Stats")
+	int Health;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Stats")
+	float ReloadTime;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Stats")
+	float HookCooldownTime;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Stats")
+	float CreateGroundCooldownTime;
 
 };
 
