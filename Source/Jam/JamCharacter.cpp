@@ -126,6 +126,8 @@ void AJamCharacter::TickDamage_Implementation(int Damage)
 	if (Health > 0)
 	{
 		Health -= Damage;
+		UE_LOG(LogTemp, Warning, TEXT("Damaged!"));
+
 	}
 	else
 	{
