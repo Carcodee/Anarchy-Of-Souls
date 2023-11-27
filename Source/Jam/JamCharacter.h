@@ -15,6 +15,31 @@ class UInputAction;
 class UInputMappingContext;
 struct FInputActionValue;
 
+UENUM(BlueprintType)
+enum ERefreshType: uint8 
+{
+	GroundRefresh=0  UMETA(DisplayName = "GroundCreation"),
+	PaintRefresh=1   UMETA(DisplayName = "Paint"),
+	HookRefresh=2    UMETA(DisplayName = "Hook"),
+	
+};
+
+USTRUCT(BlueprintType)
+struct FRefreshData
+{
+	GENERATED_BODY()
+
+public:
+	//~ The following member variable will be accessible by Blueprint Graphs:
+	// This is the tooltip for our test variable.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="RefreshType")
+	bool IsOnRefresh;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="RefreshType")
+	int WaitForRefresh;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="RefreshType")
+	float CurrentTime;
+};
+
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 UCLASS(config=Game)
@@ -91,8 +116,15 @@ public:
 	float HookTime;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	float GroundGeneratorTime;
+	ERefreshType RefreshType;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RefreshType")
+	TArray<FRefreshData> RefreshDataArray;
+	
+	
+	//Util Funcs
 public:
 	virtual void TickDamage_Implementation(int Damage)override;
 };
+
 
