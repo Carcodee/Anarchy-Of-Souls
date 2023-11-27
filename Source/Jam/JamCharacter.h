@@ -93,6 +93,6 @@ public:
 	float GroundGeneratorTime;
 
 public:
-	void TickDamage_Implementation(int Damage)override;
+	virtual void TickDamage_Implementation(int Damage)override;
 };
 

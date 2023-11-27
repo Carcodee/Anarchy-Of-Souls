@@ -127,7 +127,8 @@ void AJamCharacter::TickDamage_Implementation(int Damage)
 	{
 		Health -= Damage;
 		UE_LOG(LogTemp, Warning, TEXT("Damaged!"));
-
+		Health=FMath::Clamp(Health, 0, 100);
+		
 	}
 	else
 	{
