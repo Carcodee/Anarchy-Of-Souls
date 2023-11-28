@@ -15,14 +15,6 @@ class UInputAction;
 class UInputMappingContext;
 struct FInputActionValue;
 
-UENUM(BlueprintType)
-enum ERefreshType: uint8 
-{
-	GroundRefresh=0  UMETA(DisplayName = "GroundCreation"),
-	PaintRefresh=1   UMETA(DisplayName = "Paint"),
-	HookRefresh=2    UMETA(DisplayName = "Hook"),
-	
-};
 
 USTRUCT(BlueprintType)
 struct FRefreshData
@@ -116,7 +108,7 @@ public:
 	float HookTime;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	float GroundGeneratorTime;
-	ERefreshType RefreshType;
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RefreshType")
 	TArray<FRefreshData> RefreshDataArray;
