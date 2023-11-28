@@ -15,6 +15,7 @@ AEnemyAIBase::AEnemyAIBase()
 void AEnemyAIBase::BeginPlay()
 {
 	Super::BeginPlay();
+	IsTickeable=true;
 	
 }
 
@@ -22,7 +23,9 @@ void AEnemyAIBase::BeginPlay()
 void AEnemyAIBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	//add delay
 
+	
 }
 
 // Called to bind functionality to input
@@ -32,16 +35,23 @@ void AEnemyAIBase::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 }
 
-// void AEnemyBase::TickDamage_Implementation(int Damage)
-// {
-// 	if (Health > 0)
-// 	{
-// 		Health -= Damage;
-// 		// Health=FMath::Clamp(Health, 0, MaxHealth);
-// 		
-// 	}
-// 	else
-// 	{
-// 		UE_LOG(LogTemp, Warning, TEXT("Enemy is dead!"));
-// 	}
-// }
+void AEnemyAIBase::TickDamage_Implementation(int Damage)
+{
+
+	if (IsTickeable)
+	{
+		if (Health > 0)
+		{
+			Health -= Damage;
+			Health=FMath::Clamp(Health, 0, MaxHealth);
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Enemy Health: %d"), Health));
+			IsTickeable=false;
+
+		}
+		else
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Dead")));
+
+		}
+	}
+}

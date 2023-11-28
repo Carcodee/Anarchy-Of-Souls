@@ -123,15 +123,20 @@ bool AJamCharacter::GetHasRifle()
 
 void AJamCharacter::TickDamage_Implementation(int Damage)
 {
-	if (Health > 0)
+	if (IsTickeable)
 	{
-		Health -= Damage;
-		UE_LOG(LogTemp, Warning, TEXT("Damaged!"));
-		Health=FMath::Clamp(Health, 0, 100);
 		
+		if (Health > 0)
+		{
+			Health -= Damage;
+			UE_LOG(LogTemp, Warning, TEXT("Damaged!"));
+			Health=FMath::Clamp(Health, 0, 100);
+			IsTickeable=false;
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("You are dead!"));
+		}
 	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("You are dead!"));
-	}
+
 }

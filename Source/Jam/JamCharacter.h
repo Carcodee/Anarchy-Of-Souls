@@ -102,6 +102,7 @@ public:
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	int Health;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	float PaintingTime;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
@@ -109,6 +110,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	float GroundGeneratorTime;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
+	bool IsTickeable;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RefreshType")
 	TArray<FRefreshData> RefreshDataArray;

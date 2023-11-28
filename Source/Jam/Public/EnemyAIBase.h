@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Interfaces/Tickeable.h"
 #include "EnemyAIBase.generated.h"
 
 UCLASS()
-class JAM_API AEnemyAIBase : public ACharacter
+class JAM_API AEnemyAIBase : public ACharacter,public ITickeable
 {
 	GENERATED_BODY()
 
@@ -27,15 +28,16 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
-	 float Health;
-	 UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
-	 float MaxHealth;
-	 UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
-	 float Speed;
-	 UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
-	 float Damage;
-	 // void TickDamage_Implementation(int Damage);
-	
+	int Health;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
+	int MaxHealth;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
+	float Speed;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
+	int EnemyDamage;
 
+	virtual void TickDamage_Implementation(int Damage)override;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
+	bool IsTickeable;
 
 };
