@@ -3,18 +3,17 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Pawn.h"
-#include "Interfaces/Tickeable.h"
-#include "EnemyBase.generated.h"
+#include "GameFramework/Character.h"
+#include "EnemyAIBase.generated.h"
 
 UCLASS()
-class JAM_API AEnemyBase : public APawn, ITickeable
+class JAM_API AEnemyAIBase : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this pawn's properties
-	AEnemyBase();
+	// Sets default values for this character's properties
+	AEnemyAIBase();
 
 protected:
 	// Called when the game starts or when spawned
@@ -28,14 +27,15 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
-	float Health;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
-	float MaxHealth;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
-	float Speed;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
-	float Damage;
+	 float Health;
+	 UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
+	 float MaxHealth;
+	 UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
+	 float Speed;
+	 UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
+	 float Damage;
+	 // void TickDamage_Implementation(int Damage);
+	
 
-	virtual void TickDamage_Implementation(int Damage)override;
 
 };

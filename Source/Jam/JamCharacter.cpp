@@ -134,5 +134,4 @@ void AJamCharacter::TickDamage_Implementation(int Damage)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("You are dead!"));
 	}
-	
 }
