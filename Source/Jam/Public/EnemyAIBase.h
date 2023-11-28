@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Interfaces/Tickeable.h"
+#include "MyRoundGameMode.h"
 #include "EnemyAIBase.generated.h"
 
 UCLASS()

@@ -3,6 +3,8 @@
 
 #include "EnemyAIBase.h"
 
+#include "GameFramework/GameModeBase.h"
+
 // Sets default values
 AEnemyAIBase::AEnemyAIBase()
 {
@@ -44,13 +46,16 @@ void AEnemyAIBase::TickDamage_Implementation(int Damage)
 		{
 			Health -= Damage;
 			Health=FMath::Clamp(Health, 0, MaxHealth);
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Enemy Health: %d"), Health));
+			// GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Enemy Health: %d"), Health));
 			IsTickeable=false;
 
 		}
 		else
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Dead")));
+			AMyRoundGameMode* const MyGameMode = GetWorld()->GetAuthGameMode<AMyRoundGameMode>();
+			MyGameMode->EnemiesKilled++;
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Enemies Killed: %d"), MyGameMode->EnemiesKilled));
 			Destroy();
 		}
 	}
