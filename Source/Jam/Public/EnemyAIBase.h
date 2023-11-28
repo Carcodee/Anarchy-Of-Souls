@@ -39,5 +39,6 @@ public:
 	virtual void TickDamage_Implementation(int Damage)override;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
 	bool IsTickeable;
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="EnemyStats")
+	int SpwanPosibility; ;
 };

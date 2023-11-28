@@ -51,7 +51,7 @@ void AEnemyAIBase::TickDamage_Implementation(int Damage)
 		else
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Dead")));
-
+			Destroy();
 		}
 	}
 }
