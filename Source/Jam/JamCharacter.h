@@ -102,7 +102,10 @@ public:
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	int Health;
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats")
+	int MaxDamage;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats")
+	int MinDamage;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	float PaintingTime;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
