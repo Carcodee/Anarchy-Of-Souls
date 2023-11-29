@@ -135,6 +135,33 @@ bool AJamCharacter::GetCanRegeneateHP(float DeltaTime)
 	}
 }
 
+void AJamCharacter::HandleHookTime(float DeltaTime)
+{
+	if (CurrentHookTime>= HookTime)
+	{
+		Hookeable=true;
+	}
+	else
+	{
+		Hookeable=false;
+		CurrentHookTime += DeltaTime;
+	}
+
+}
+
+void AJamCharacter::HandleDashTime(float DeltaTime)
+{
+	if (CurrentDashTime >= DashTime)
+	{
+		Dasheable=true;
+	}
+	else
+	{
+		Dasheable=false;
+		CurrentDashTime += DeltaTime;
+	}
+}
+
 void AJamCharacter::TickDamage_Implementation(int Damage)
 {
 	if (IsTickeable)
@@ -143,14 +170,14 @@ void AJamCharacter::TickDamage_Implementation(int Damage)
 		if (Health > 0)
 		{
 			Health -= Damage;
-			UE_LOG(LogTemp, Warning, TEXT("Damaged!"));
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Health: %d"), Health));
 			CurrentTimeToRegenerateHp = 0;
 			Health=FMath::Clamp(Health, 0, 100);
 			IsTickeable=false;
 		}
 		else
 		{
-			UE_LOG(LogTemp, Warning, TEXT("You are dead!"));
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Health: %d"), Health));
 		}
 	}
 

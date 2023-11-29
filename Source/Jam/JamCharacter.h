@@ -111,8 +111,19 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	float HookTime;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
+	float CurrentHookTime;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
+	bool Hookeable;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
+	float DashTime;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
+	float CurrentDashTime;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
+	bool Dasheable;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	float GroundGeneratorTime;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	bool IsTickeable;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "stats")
@@ -125,7 +136,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Stats")
 	bool GetCanRegeneateHP(float DeltaTime);
-	
+	UFUNCTION(BlueprintCallable, Category = "Stats")
+	void HandleHookTime(float DeltaTime);
+	UFUNCTION(BlueprintCallable, Category = "Stats")
+	void HandleDashTime(float DeltaTime);
 	//Util Funcs
 public:
 	virtual void TickDamage_Implementation(int Damage)override;
