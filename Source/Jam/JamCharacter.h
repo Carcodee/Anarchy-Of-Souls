@@ -115,14 +115,21 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	bool IsTickeable;
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "stats")
+	int TimeToRegenerateHp;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "stats")
+	float CurrentTimeToRegenerateHp;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RefreshType")
 	TArray<FRefreshData> RefreshDataArray;
-	
+
+	UFUNCTION(BlueprintCallable, Category = "Stats")
+	bool GetCanRegeneateHP(float DeltaTime);
 	
 	//Util Funcs
 public:
 	virtual void TickDamage_Implementation(int Damage)override;
+
 };
 
 

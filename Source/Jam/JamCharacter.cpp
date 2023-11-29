@@ -45,7 +45,7 @@ void AJamCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
-
+	CurrentTimeToRegenerateHp = 0;
 	// Add Input Mapping Context
 	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
 	{
@@ -121,6 +121,20 @@ bool AJamCharacter::GetHasRifle()
 // ---------------------------------------------------------------------------------------
 
 
+bool AJamCharacter::GetCanRegeneateHP(float DeltaTime)
+{
+	if (CurrentTimeToRegenerateHp >= TimeToRegenerateHp)
+	{
+		CurrentTimeToRegenerateHp = 0;
+		return true;
+	}
+	else
+	{
+		CurrentTimeToRegenerateHp += DeltaTime;
+		return false;
+	}
+}
+
 void AJamCharacter::TickDamage_Implementation(int Damage)
 {
 	if (IsTickeable)
@@ -130,6 +144,7 @@ void AJamCharacter::TickDamage_Implementation(int Damage)
 		{
 			Health -= Damage;
 			UE_LOG(LogTemp, Warning, TEXT("Damaged!"));
+			CurrentTimeToRegenerateHp = 0;
 			Health=FMath::Clamp(Health, 0, 100);
 			IsTickeable=false;
 		}
