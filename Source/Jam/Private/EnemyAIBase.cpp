@@ -46,7 +46,7 @@ void AEnemyAIBase::TickDamage_Implementation(int Damage)
 		{
 			Health -= Damage;
 			Health=FMath::Clamp(Health, 0, MaxHealth);
-			// GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Enemy Health: %d"), Health));
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Enemy Health: %d"), Health));
 			IsTickeable=false;
 
 		}
