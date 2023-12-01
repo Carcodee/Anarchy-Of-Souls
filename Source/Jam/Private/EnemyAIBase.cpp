@@ -18,6 +18,7 @@ void AEnemyAIBase::BeginPlay()
 {
 	Super::BeginPlay();
 	IsTickeable=true;
+	Health=MaxHealth;
 	
 }
 
@@ -25,6 +26,7 @@ void AEnemyAIBase::BeginPlay()
 void AEnemyAIBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	
 	//add delay
 
 	
