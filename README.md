@@ -16,9 +16,13 @@ On this game we play as Alonso in his crusade to recover the blue ribbon of his 
 
 Controls:
 
-Left Click - Paint
-Right Click - Create Floor
-Shift - Dash
-E - Drop Paint
-F - Hook
+- Left Click - Paint
+  
+- Right Click - Create Floor
+  
+- Shift - Dash
+  
+- E - Drop Paint
+  
+- F - Hook
 
